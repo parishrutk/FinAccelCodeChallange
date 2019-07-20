@@ -1,4 +1,4 @@
-# FinAccleCodeChallange
+# FinAccelCodeChallange
 It contains 3 assignments.
 
 Expectations:-
