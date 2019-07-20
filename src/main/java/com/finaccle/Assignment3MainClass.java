@@ -1,6 +1,5 @@
 package com.finaccle;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Assignment3MainClass {
@@ -39,13 +38,13 @@ public class Assignment3MainClass {
         }
     }
 
-    private static int[] swapArrayKTimes(int[] arrayOfProcessIds, String[] swapPositionsArray) {
+    public static int[] swapArrayKTimes(int[] arrayOfProcessIds, String[] swapPositionsArray) {
 
         int swapFailures = 0;
         for (int i = 0; i < swapPositionsArray.length; i++) {
             int positionOfSwap = Integer.parseInt(swapPositionsArray[i]);
 
-            if (positionOfSwap > arrayOfProcessIds.length) {
+            if (positionOfSwap > arrayOfProcessIds.length || positionOfSwap < 0) {
                 swapFailures++;
                 System.out.println("Invalid Swap Position [" + positionOfSwap + "] specified. Swapping position has to be between [0 to " + arrayOfProcessIds.length + "] Ignoring the Swap Position and continuing the next one.");
                 continue;
@@ -60,11 +59,13 @@ public class Assignment3MainClass {
             System.out.println("-----------------------------------------------------");
             arrayOfProcessIds = newArray;
         }
-
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Total Swap Failure observed are " + swapFailures);
+        System.out.println("-----------------------------------------------------");
         return arrayOfProcessIds;
     }
 
-    private static void shuffleArray(int[] newArray, int[] arrayOfProcessIds, int positionOfSwap) {
+    public static void shuffleArray(int[] newArray, int[] arrayOfProcessIds, int positionOfSwap) {
         newArray[0] = arrayOfProcessIds[positionOfSwap];
         for (int i = 1; i <= positionOfSwap; i++) {
             newArray[i] = arrayOfProcessIds[i - 1];
