@@ -5,3 +5,7 @@
 .idea/compiler.xml
 .idea/.name
 .idea/workspace.xml
+*.kotlin_module
+*.class
+target/classes/log4j.properties
+FinaccleAssignment3.iml

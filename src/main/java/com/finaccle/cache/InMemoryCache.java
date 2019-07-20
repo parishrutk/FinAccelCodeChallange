@@ -19,6 +19,18 @@ public class InMemoryCache<K, V> implements Cache {
     private static Long timeToLiveInMs;
     private static Map<String, CachedObjectWrapper> inMemoryConcurrentMap;
 
+    public static Integer getInMemorySize() {
+        return inMemorySize;
+    }
+
+    public static Long getTimeToLiveInMs() {
+        return timeToLiveInMs;
+    }
+
+    public static Map<String, CachedObjectWrapper> getInMemoryConcurrentMap() {
+        return inMemoryConcurrentMap;
+    }
+
     @Override
     public void remove(String key) throws NoSuchElementException {
 
@@ -48,7 +60,6 @@ public class InMemoryCache<K, V> implements Cache {
 
     @Override
     public void add(String key, CachedObjectWrapper value, long timeToLive) {
-        value.setExpiryTime(System.currentTimeMillis() + timeToLive);
         this.add(key, value);
     }
 
