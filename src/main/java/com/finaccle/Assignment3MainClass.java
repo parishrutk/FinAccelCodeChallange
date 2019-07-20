@@ -22,17 +22,14 @@ public class Assignment3MainClass {
         String swapArray = input.next();
         String[] swapSplitArray = swapArray.split(",");
 
-        //keep the original copy for reference
-        int[] originalArray = Arrays.copyOf(arrayOfProcessIds, totalNumber);
-
         System.out.println("=================================================================");
         //print the original copy for reference
-        for (int j = 0; j < originalArray.length; j++) {
-            System.out.println("Original Process Id: " + originalArray[j]);
+        for (int j = 0; j < arrayOfProcessIds.length; j++) {
+            System.out.println("Original Process Id: " + arrayOfProcessIds[j]);
         }
         System.out.println("=================================================================");
         try {
-            System.out.println("Swapping Position is considered from 0th Index.\n");
+            System.out.println("Swapping Position is considered from 0th Index.\n\n==================================================");
             arrayOfProcessIds = swapArrayKTimes(arrayOfProcessIds, swapSplitArray);
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,16 +38,17 @@ public class Assignment3MainClass {
         for (int j = 0; j < arrayOfProcessIds.length; j++) {
             System.out.println("New Process Id: " + arrayOfProcessIds[j]);
         }
-
     }
 
     private static int[] swapArrayKTimes(int[] arrayOfProcessIds, String[] swapPositionsArray) throws Exception {
 
+        int swapFailures = 0;
         for (int i = 0; i < swapPositionsArray.length; i++) {
             int positionOfSwap = Integer.parseInt(swapPositionsArray[i]);
 
             if (positionOfSwap > arrayOfProcessIds.length) {
-                System.out.println("Invalid Swap Position specified. Ignoring the Swap Position and continuing the next one.");
+                swapFailures++;
+                System.out.println("Invalid Swap Position [" + positionOfSwap + "] specified. Swapping position has to be between [0 to " + arrayOfProcessIds.length + "] Ignoring the Swap Position and continuing the next one.");
                 continue;
             }
             int[] newArray = new int[arrayOfProcessIds.length];
