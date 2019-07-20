@@ -6,20 +6,20 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- * Unit test for simple App.
+ * Unit test for Assignment3.
  */
 public class Assignment3MainClassTest {
-    /**
-     * Rigorous Test :-)
-     */
 
     @Test
     public void testSwapArray_success() {
 
         int[] arrayOfProcessIds = {5, 1, 10, 3, 12};
+        int[] newArrayCopy = {3, 1, 5, 10, 12};
         String[] swapPositionArray = {"3", "2", "1"};
         int[] newArray = Assignment3MainClass.swapArrayKTimes(arrayOfProcessIds, swapPositionArray);
 
+        Assert.assertTrue(arrayOfProcessIds.length == 5);
+        Assert.assertTrue(Arrays.equals(newArrayCopy, newArray));
         Assert.assertFalse(Arrays.equals(arrayOfProcessIds, newArray));
     }
 
