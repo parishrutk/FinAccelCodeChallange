@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Assignment3MainClass {
 
     public static void main(String[] args) {
+
         System.out.println("Please Enter Total number of process_ids ==> ");
         Scanner input = new Scanner(System.in);
         int totalNumber = input.nextInt();
@@ -28,19 +29,17 @@ public class Assignment3MainClass {
             System.out.println("Original Process Id: " + arrayOfProcessIds[j]);
         }
         System.out.println("=================================================================");
-        try {
-            System.out.println("Swapping Position is considered from 0th Index.\n\n==================================================");
-            arrayOfProcessIds = swapArrayKTimes(arrayOfProcessIds, swapSplitArray);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("Swapping Position is considered from 0th Index.\n\n==================================================");
+
+        arrayOfProcessIds = swapArrayKTimes(arrayOfProcessIds, swapSplitArray);
+
         System.out.println("After Swapping it " + swapSplitArray.length + " Times New Process Array \n");
         for (int j = 0; j < arrayOfProcessIds.length; j++) {
             System.out.println("New Process Id: " + arrayOfProcessIds[j]);
         }
     }
 
-    private static int[] swapArrayKTimes(int[] arrayOfProcessIds, String[] swapPositionsArray) throws Exception {
+    private static int[] swapArrayKTimes(int[] arrayOfProcessIds, String[] swapPositionsArray) {
 
         int swapFailures = 0;
         for (int i = 0; i < swapPositionsArray.length; i++) {
