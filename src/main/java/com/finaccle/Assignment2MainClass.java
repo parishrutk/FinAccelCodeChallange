@@ -56,7 +56,8 @@ public class Assignment2MainClass {
                     key = scannerInput.next();
                     try {
                         cache.remove(key);
-                    } catch (Exception e) {
+                    } catch (NoSuchElementException e) {
+                        LOGGER.error("The given does not exist in Cache.");
                         e.printStackTrace();
                     }
                     break;

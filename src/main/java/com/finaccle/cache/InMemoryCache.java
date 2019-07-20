@@ -20,14 +20,17 @@ public class InMemoryCache<K, V> implements Cache {
     private static Map<String, CachedObjectWrapper> inMemoryConcurrentMap;
 
     @Override
-    public void remove(String key) throws Exception {
+    public void remove(String key) throws NoSuchElementException {
 
         if (key == null)
-            throw new Exception("Key can not be null or empty");
+            throw new NoSuchElementException("Key can not be null or empty");
 
-        LOGGER.debug("Removing Cached Object from Memory for Key {} ", key);
+        LOGGER.debug("Trying to remove Cached Object from Memory for Key {} ", key);
         CachedObjectWrapper removedObject = inMemoryConcurrentMap.remove(key);
-        LOGGER.debug("Removed Cached Memory Object : {} ", removedObject);
+        if (removedObject == null)
+            LOGGER.info("Cache Object does not exist for Key {} ", key);
+        else
+            LOGGER.debug("Removed Cached Memory Object : {} ", removedObject);
     }
 
     @Override
